@@ -1,0 +1,7 @@
+{
+  "name": "Powershine Tech",
+  "description": "Enterprise-grade industrial electronics repair, PCB design, and automation specialists in Tiruppur, Tamil Nadu.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

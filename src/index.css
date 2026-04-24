@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #059669;
+  --primary-dark: #047857;
+  --accent: #10b981;
+  --primary-green: #059669;
+  --accent-light: #22c55e;
+  
+  /* Default to Dark Mode */
+  --bg: #060a08;
+  --card: #0d1210;
+  --text: #cbd5e1;
+  --text-heading: #ffffff;
+  --text-muted: #94a3b8;
+  --border: rgba(255, 255, 255, 0.05);
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #334155;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border: rgba(0, 0, 0, 0.05);
+  --glass: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.1);
+}
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Rajdhani", sans-serif;
+  
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-accent: var(--accent);
+  --color-primary-green: var(--primary-green);
+  --color-accent-light: var(--accent-light);
+  --color-dark-bg: var(--bg);
+  --color-dark-card: var(--card);
+  --color-slate-300: var(--text);
+  --color-slate-400: var(--text-muted);
+  --color-white: var(--text-heading);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark-bg transition-colors duration-300;
+    color: var(--text);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight transition-colors duration-300;
+    color: var(--text-heading);
+  }
+}
+
+@layer components {
+  .glass {
+    @apply backdrop-blur-xl border transition-all duration-300;
+    background-color: var(--glass);
+    border-color: var(--glass-border);
+  }
+  
+  .glass-dark {
+    @apply backdrop-blur-xl border transition-all duration-300;
+    background-color: rgba(13, 18, 16, 0.65);
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .neon-glow-primary {
+    box-shadow: 0 0 25px rgba(5, 150, 105, 0.2);
+  }
+
+  .neon-border-primary {
+    @apply border border-primary/30 hover:border-primary transition-colors duration-300;
+  }
+
+  /* Parallax Utilities */
+  .parallax-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-bg;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/30 rounded-full hover:bg-primary/50 transition-colors;
+}
+
+::view-transition-group(*),
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: 0.25s;
+  animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
