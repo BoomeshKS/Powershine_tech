@@ -90,7 +90,7 @@ export const PRODUCTS = [
   id: `p-${i}`,
   price: Math.floor(Math.random() * 50000) + 500,
   description: `High-quality ${p.name} for industrial applications. Reliable performance and durable design.`,
-  image: `https://picsum.photos/seed/${p.name.replace(/\s/g, '')}/400/400`,
+  image: `https://picsum.photos/seed/${p.name.replace(/[^a-zA-Z0-9]/g, '')}/400/400`,
   stock: Math.floor(Math.random() * 50) + 1,
   rating: 4 + Math.random()
 }));
